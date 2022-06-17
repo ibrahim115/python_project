@@ -10,11 +10,13 @@ const App= () => (
   <Router>
     <Fragment>
       <Navbar/>
-      <section>
       <Routes>
         <Route exact path='/' element={<Landing/>}/>
+      </Routes>
+      <section>
+      <Routes>
         <Route exact path='/register' component={Register} />;
-        <Route exact path='/login' component={Login} />;
+        <Route exact path='/login' component={Login}/>;
       </Routes>
       </section>
     </Fragment>)
