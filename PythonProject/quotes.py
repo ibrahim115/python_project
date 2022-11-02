@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     cars = ["Toyota", "Honda", "Mitsubishi"]
-    return render_template('index.html')
+    return render_template('index.html', pesan="Ini adalah pesan", cars=cars)
 
 @app.route('/about')
 def about():
