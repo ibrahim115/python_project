@@ -11,11 +11,15 @@
     Hallo dok !!!
   </h1>
   {% if pesan %}
-  <h2>
-    {{ pesan }}
-  </h2>
+  <h2>{{ pesan }}</h2>
   {% else %}
   <h2>Tidak ada pesan tersedia...</h2>
   {% endif %}
+  <h2>My favorit cars adalah:</h2>
+  <ul>
+   {% for car in cars %}
+   <li>{{ car }}</li>
+   {% endfor %}
+  </ul>
 </body>
 </html>

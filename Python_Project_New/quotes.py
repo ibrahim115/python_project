@@ -4,7 +4,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-  return render_template('index.html', pesan="From Render Template, dan melewat kan (pass) variable kedalam halaman HTML and its work!")
+  cars = ["Toyota", "Honda", "Mitsubishi"]
+  return render_template('index.html', pesan="", cars=cars)
 
 @app.route('/about')
 def about():
