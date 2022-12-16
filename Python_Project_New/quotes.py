@@ -1,11 +1,23 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:password@localhost/obat'
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+class Favobat(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  nama = db.Column(db.String(30))
+  description = db.Column(db.String(2000))
+
 @app.route('/')
 def index():
-  cars = ["Toyota", "Honda", "Mitsubishi"]
-  return render_template('index.html', pesan="", cars=cars)
+  return render_template('index.html')
 
 @app.route('/about')
 def about():
@@ -13,4 +25,10 @@ def about():
 
 @app.route('/quotes')
 def quotes():
-  return '<h1> Hidup adalah perjalanan</h1>'
+  return render_template('infoobat.html')
+
+@app.route('/process', methods=['POST'])
+def process():
+  namaobat = request.form('namaobat')
+  description = request.form('description')
+  return redirect(url_for('index.html'))
